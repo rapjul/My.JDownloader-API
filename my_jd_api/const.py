@@ -2,11 +2,11 @@
 
 # API Documentation: https://my.jdownloader.org/developers
 
-# MyJdownloader exception source
+# MyJDownloader exception source
 EXCEPTION_MYJD = "MYJD"
 EXCEPTION_DEVICE = "DEVICE"
 
-# MyJdownloader exception type
+# MyJDownloader exception type
 EXCEPTION_API_COMMAND_NOT_FOUND = "API_COMMAND_NOT_FOUND"
 EXCEPTION_API_INTERFACE_NOT_FOUND = "API_INTERFACE_NOT_FOUND"
 EXCEPTION_AUTH_FAILED = "AUTH_FAILED"

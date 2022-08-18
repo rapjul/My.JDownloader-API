@@ -1,6 +1,6 @@
 """Exceptions of the MyJDownloader API."""
 
-from .const import (
+from my_jd_api.const import (
     EXCEPTION_API_COMMAND_NOT_FOUND,
     EXCEPTION_API_INTERFACE_NOT_FOUND,
     EXCEPTION_AUTH_FAILED,
@@ -58,19 +58,19 @@ class MYJDDecodeException(MYJDException):
 class MYJDApiException(MYJDException):
     """Base MyJDownloader API Exception."""
 
+    def __init__(self, exception_source, *args, **kwargs):
+        """Initialize MyJDownloader API exception."""
+        self.source = exception_source.upper()
+        super(MYJDApiException, self).__init__(*args, **kwargs)
+
     @classmethod
     def get_exception(
-        cls, exception_source, exception_type=EXCEPTION_UNKNOWN, *args, **kwargs
+        cls, exception_source, *args, exception_type=EXCEPTION_UNKNOWN, **kwargs
     ):
         """Get exception object from MyJDownloader exception type."""
         return EXCEPTION_CLASSES.get(exception_type.upper(), MYJDUnknownException)(
             exception_source, *args, **kwargs
         )
-
-    def __init__(self, exception_source, *args, **kwargs):
-        """Initialize MyJDownloader API exception."""
-        self.source = exception_source.upper()
-        super(MYJDApiException, self).__init__(*args, **kwargs)
 
 
 class MYJDApiCommandNotFoundException(MYJDApiException):

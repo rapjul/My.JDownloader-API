@@ -1,19 +1,33 @@
-from .myjdapi import Myjdapi
-from .exception import (
-    MYJDException,
-    MYJDConnectionException,
-    MYJDDeviceNotFoundException,
-    MYJDDecodeException,
-    MYJDApiException,
+__version__ = "2.0.0"
+
+from my_jd_api.commands import (
+    Captcha,
+    Config,
+    DownloadController,
+    Downloads,
+    Jd,
+    Jddevice,
+    Linkgrabber,
+    Myjdapi,
+    System,
+    Toolbar,
+    Update,
+)
+from my_jd_api.exception import (
     MYJDApiCommandNotFoundException,
+    MYJDApiException,
     MYJDApiInterfaceNotFoundException,
     MYJDAuthFailedException,
     MYJDBadParametersException,
     MYJDBadRequestException,
     MYJDChallengeFailedException,
+    MYJDConnectionException,
+    MYJDDecodeException,
+    MYJDDeviceNotFoundException,
     MYJDEmailForbiddenException,
     MYJDEmailInvalidException,
     MYJDErrorEmailNotConfirmedException,
+    MYJDException,
     MYJDFailedException,
     MYJDFileNotFoundException,
     MYJDInternalServerErrorException,
@@ -33,5 +47,3 @@ from .exception import (
     MYJDTooManyRequestsException,
     MYJDUnknownException,
 )
-
-__version__ = "1.1.5"

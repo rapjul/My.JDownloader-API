@@ -1,0 +1,17 @@
+{
+    "python.formatting.provider": "black",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+        "source.organizeImports": true
+    },
+    "python.linting.enabled": true,
+    "python.linting.lintOnSave": true,
+    "python.linting.pylintEnabled": false,
+    // "python.linting.mypyEnabled": true,
+    // "python.linting.mypyArgs": [
+    //   "--follow-imports=silent",
+    //   "--show-column-numbers"
+    // ],
+    "python.linting.pydocstyleEnabled": false,
+    "python.testing.pytestEnabled": false,
+}
