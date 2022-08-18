@@ -1,4 +1,4 @@
-from src.my_jd_api.commands.device import Jddevice
+from my_jd_api.commands.device import Jddevice
 
 
 class Downloads:
