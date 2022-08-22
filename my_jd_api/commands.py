@@ -970,13 +970,6 @@ class Myjdapi:
         self.__email = email
         self.__password = password
 
-    # def __enter__(self):
-    #     self._session = self.connect(self.__email, self.__password)
-    #     return self._session
-
-    # def __exit__(self, exc_type, exc_value, traceback):
-    #     self.disconnect()
-
     def get_session_token(self):
         return self.__session_token
 
@@ -1091,10 +1084,20 @@ class Myjdapi:
         self.__devices = None
         self.__connected = False
 
-        self.__login_secret = self.__secret_create(email, password, "server")
-        self.__device_secret = self.__secret_create(email, password, "device")
+        if self.__email != "":
+            self.__email = email
+        if self.__password != "":
+            self.__password = password
+
+        self.__login_secret = self.__secret_create(
+            self.__email, self.__password, "server"
+        )
+        self.__device_secret = self.__secret_create(
+            self.__email, self.__password, "device"
+        )
+
         response = self.request_api(
-            "/my/connect", "GET", [("email", email), ("appkey", self.__app_key)]
+            "/my/connect", "GET", [("email", self.__email), ("appkey", self.__app_key)]
         )
         self.__connected = True
         self.update_request_id()

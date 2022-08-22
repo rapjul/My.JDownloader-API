@@ -1,12 +1,17 @@
-# My.Jdownloader-API-Python-Library
+# My.JDownloader-API
 
-This a module for Python 2/3 to interact with My.Jdownloader. This is in a WIP project.You're free to use it following the MIT license and any collaboration is appreciated.
+This a module for Python 3 to interact with My.JDownloader. This is in a WIP project. You're free to use it following the MIT license and any collaboration is appreciated.
 
-## Is this dead?
+To use this API you need to use a "APPkey". This APPkey can be anything
+you want but it's recommended to be something that identifies your
+project or a URL to it. Right now this module uses "http://git.io/vmcsk"
+as the APPKey, but this APPKey is intended just for testing and for
+little projects, it's recommended that you uses your own "APPKey" so if
+for some reason this APPKey gets blocked you don't get affected.
 
-No, it's true that I don't actively develop it, as in there are still functions not implemented. But if you find something missing, feel free to open an issue and I will take a look asap or even better, if you know how to add it feel free to do it and do a PR and I will merge it asap once I have test it.
-
-Basically I develop it as in on demand kind of thing, if something is broken or something new is needed I take a look at it and try to fix it or add it.
+Right now the only things working are: - JD: -
+Connect,Disconnect,Reconnect,GetDevices,listDevices - JD.Device: -
+action,addLinks
 
 ## Common Issues
 
@@ -14,26 +19,29 @@ Basically I develop it as in on demand kind of thing, if something is broken or 
 
 99,99% of the times is not an issue of the library, it is due the JDownloader Packagizer check this closed issue to understand why it happens and how you can make it work: [#36](https://github.com/mmarquezs/My.Jdownloader-API-Python-Library/issues/36)
 
-## How to use the api?
+## How to use the API?
 
-**NEW:** Now you can install it using pip from the pypi repo.
+**NEW:** Now you can install it using pip from the PyPI repo.
 
-> pip install myjdapi
+```sh
+pip install my_jd_api
+```
+
 
 Example:
 
 ```python
 #First of all you have to make an instance of the Myjdapi class and set your APPKey:
-import myjdapi
+import my_jd_api
 
-jd=myjdapi.Myjdapi()
+jd = my_jd_api.Myjdapi()
 jd.set_app_key("EXAMPLE")
 
 """
 After that you can connect.
 Now you can only connect using username and password.
 This is a problem because you can't remember the session between executions
-for this reason i will add a way to "connect" which is actually not connecting,
+for this reason I will add a way to "connect" which is actually not connecting,
 but adding the old tokens you saved. This way you can use this between executions
 as long as your tokens are still valid without saving the username and password.
 """
@@ -53,40 +61,40 @@ device=jd.get_device(device_id="43434")
 # After that you can use the different API functions.
 # For example i want to get the packages of the downloads list, the API has a function under downloads called queryPackages,
 # you can use it with this library like this:
-device.downloads.query_packages([{
-                "bytesLoaded" : True,
-                "bytesTotal" : True,
-                "comment" : False,
-                "enabled" : True,
-                "eta" : True,
-                "priority" : False,
-                "finished" : True,
-                "running" : True,
-                "speed" : True,
-                "status" : True,
-                "childCount" : True,
-                "hosts" : True,
-                "saveTo" : True,
-                "maxResults" : -1,
-                "startAt" : 0,
-            }])
+device.downloads.query_packages(
+    [
+        {
+            "bytesLoaded" : True,
+            "bytesTotal" : True,
+            "comment" : False,
+            "enabled" : True,
+            "eta" : True,
+            "priority" : False,
+            "finished" : True,
+            "running" : True,
+            "speed" : True,
+            "status" : True,
+            "childCount" : True,
+            "hosts" : True,
+            "saveTo" : True,
+            "maxResults" : -1,
+            "startAt" : 0,
+        }
+    ]
+)
+
+
+device.linkgrabber.addLinks(
+    [{
+        "autostart" : False,
+        "links" : "https://mega.nz/#xxxxx!xxxxx,http://mediafire.com/download/xxxxxxxxxx/",
+        "packageName" : "TEST"
+    }]
+)
 ```
 
-# DOCUMENTATION
 
-Sadly currently broken. In any case the documentation was generated with the pydoc comments inside the code itself so checking the code should be enough for now.
-
-http://myjdownloader-api-python-library.readthedocs.org/en/latest/myjdapi.html#module-myjdapi
-
-# PROJECTS USING THE LIBRARY
-
-Here are example of projects currently using the library. If you want to add your project feel free to open a PR so it gets added.
-
-:warning: **WARNING**: I am not endorsing or curating these projects and neither I am responsible nor liable for any problems, losses or damages caused by any of those libraries. Take your own precautions.
-
-- **PyYoutube2JD** - Allows JDownloader users to get all video links from a Youtube account (or playlist). - https://github.com/MarianoDesivo/PyYoutube2JD
-
-# LICENSE
+## License
 
 The MIT License (MIT)
 

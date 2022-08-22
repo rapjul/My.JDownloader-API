@@ -14,4 +14,9 @@
     // ],
     "python.linting.pydocstyleEnabled": false,
     "python.testing.pytestEnabled": false,
+    "git.enabled": true,
+    "cSpell.words": [
+        "JDownloader",
+        "MYJD"
+    ]
 }

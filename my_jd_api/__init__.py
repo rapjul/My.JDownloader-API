@@ -52,14 +52,15 @@ from my_jd_api.exception import (
 
 
 @contextmanager
-def session(
+def start_session(
     username: str,
     password: str,
+    app_key: str,
     *args,
     **kwargs,
 ):
     jd_session = Myjdapi()
-    jd_session.set_app_key("Python Script")
+    jd_session.set_app_key(app_key)
 
     """
     After that you can connect.
@@ -86,9 +87,9 @@ def session(
 
 
 @contextmanager
-def device(jd_session: Myjdapi, device_name: str = ""):
+def connect_device(jd_session: Myjdapi, device_name: str = ""):
     # When connecting it also gets the devices, so you can use them but if you want to
-    # gather the devices available in my.jdownloader later you can do it like this
+    # gather the devices available in My.JDownloader later you can do it like this
 
     jd_session.update_devices()
     # devices = jd_session.list_devices()
